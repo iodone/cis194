@@ -1,6 +1,6 @@
 -- https://www.seas.upenn.edu/~cis194/spring13/hw/01-intro.pdf
 
-module Main where 
+module Homework01.Hw01 where 
 
 -- Validating Credit Card Numbers
 
@@ -16,16 +16,11 @@ above example, the remainder would be 8.
 If the result equals 0, then the number is valid.
 -}
 
-toDigists :: Integer -> [Integer]
-toDigists n
-    | n == 0 = []
-    | otherwise = toDigists (n `div` 10) ++ [n `mod` 10]
+toDigits :: Integer -> [Integer]
+toDigits n
+    | n <= 0 = []
+    | otherwise = toDigits (n `div` 10) ++ [n `mod` 10]
 
-toDigistsRev :: Integer -> [Integer]
-toDigistsRev n = reverse $ toDigists n
-
-main :: IO ()
-main = do
-    print $ toDigistsRev 99923
-    print $ toDigists 321
+toDigitsRev :: Integer -> [Integer]
+toDigitsRev n = reverse $ toDigits n
 
