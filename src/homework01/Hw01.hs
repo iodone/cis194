@@ -24,3 +24,27 @@ toDigits n
 toDigitsRev :: Integer -> [Integer]
 toDigitsRev n = reverse $ toDigits n
 
+
+doubleEveryOther :: [Integer] -> [Integer]
+doubleEveryOther xs = reverse (doubleEveryOtherLeft (reverse xs))
+    where
+        doubleEveryOtherLeft [] = []
+        doubleEveryOtherLeft (x:[]) = [x]
+        doubleEveryOtherLeft (x:y:zs) = x : (y * 2) : doubleEveryOtherLeft zs
+    
+sumDigits :: [Integer] -> Integer
+sumDigits [] = 0
+sumDigits (x:xs) = sum(toDigits(x)) + sumDigits(xs)
+
+validate :: Integer -> Bool
+validate n = sumN `mod` 10 == 0
+    where sumN =  sumDigits . doubleEveryOther . toDigits $ n 
+    
+
+-- for hanoi
+type Peg = String
+type Move = (Peg, Peg)
+hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi n x y z
+    | n == 1 = [(x, y)]
+    | otherwise = (hanoi (n-1) x z y) ++ (hanoi 1 x y z) ++ (hanoi (n-1) z y x)
