@@ -29,12 +29,12 @@ doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther xs = reverse (doubleEveryOtherLeft (reverse xs))
     where
         doubleEveryOtherLeft [] = []
-        doubleEveryOtherLeft (x:[]) = [x]
+        doubleEveryOtherLeft [x] = [x]
         doubleEveryOtherLeft (x:y:zs) = x : (y * 2) : doubleEveryOtherLeft zs
     
 sumDigits :: [Integer] -> Integer
 sumDigits [] = 0
-sumDigits (x:xs) = sum(toDigits(x)) + sumDigits(xs)
+sumDigits (x:xs) = sum(toDigits x) + sumDigits xs
 
 validate :: Integer -> Bool
 validate n = sumN `mod` 10 == 0

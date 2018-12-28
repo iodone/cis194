@@ -29,7 +29,9 @@ library
   other-modules:
       Paths_cis194
   exposed-modules:
-      Homework01.Hw01 
+      Homework01.Hw01,
+      Homework02.LogAnalysis,
+      Homework02.Log
   hs-source-dirs:
       src
   build-depends:
@@ -53,6 +55,7 @@ test-suite test
   main-is: Spec.hs
   other-modules:
       Homework01.Hw01Spec,
+      Homework02.LogAnalysisSpec,
       Paths_cis194
   hs-source-dirs:
       test
