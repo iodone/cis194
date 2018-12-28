@@ -23,7 +23,10 @@ unwords' [] = ""
 unwords' ws = foldr1 (\w acc -> w ++ ' ':acc) ws
 
 
-
+parse :: String -> [LogMessage]
+-- parse s = parseMessage <$> (lines $ s)
+parse = (map parseMessage) . lines
+        
 
 
 

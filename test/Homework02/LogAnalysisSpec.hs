@@ -14,6 +14,7 @@ spec = describe "Homework02.LogAnalysis" $ do
 
     it "Warning log" $ do
         parseMessage "W 5 Flange is due for a check-up" `shouldBe` LogMessage Warning 5 "Flange is due for a check-up"
+        
     it "Error log" $ do
         parseMessage "E 20 2 Too many pickles" `shouldBe` LogMessage (Error 20) 2 "Too many pickles"
 
