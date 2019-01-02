@@ -61,7 +61,8 @@ whatWentWrong :: [LogMessage] -> [String]
 whatWentWrong logMsgs = 
     let sortedMsgs = inOrder . build $ logMsgs
     in
-        foldr (\x wrongMsgs-> if isRelevantMessage x then (getLogMessageString x):wrongMsgs else wrongMsgs) [] sortedMsgs
+        foldl (\wrongMsgs x -> if isRelevantMessage x then wrongMsgs ++ [(getLogMessageString x)] else wrongMsgs) [] sortedMsgs
+        -- foldr (\x wrongMsgs -> if isRelevantMessage x then (getLogMessageString x):wrongMsgs else wrongMsgs) [] sortedMsgs
 
 
 getLogMessageString :: LogMessage -> String
