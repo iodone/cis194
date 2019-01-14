@@ -48,7 +48,7 @@ getLogMessageTimestamp _ = 0
 
 --Ex. 3
 build :: [LogMessage] -> MessageTree
-build xs = foldl (\tree x -> insert x tree) Leaf xs
+build = foldl (\tree x -> insert x tree) Leaf
 
 --Ex. 4
 inOrder :: MessageTree -> [LogMessage]
