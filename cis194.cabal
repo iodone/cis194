@@ -31,8 +31,9 @@ library
   exposed-modules:
       Homework01.Hw01,
       Homework02.LogAnalysis,
-      Homework02.Log
-      Homework03.Golf
+      Homework02.Log,
+      Homework03.Golf,
+      Homework04.Hw04
   hs-source-dirs:
       src
   build-depends:
@@ -58,6 +59,7 @@ test-suite test
       Homework01.Hw01Spec,
       Homework02.LogAnalysisSpec,
       Homework03.GolfSpec,
+      Homework04.Hw04Spec,
       Paths_cis194
   hs-source-dirs:
       test

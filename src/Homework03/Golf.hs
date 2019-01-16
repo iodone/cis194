@@ -30,6 +30,7 @@ histogram xs =
     let 
         frequences = trans xs
         height = foldr1 max frequences 
+        -- using transpose rows to columns
         visualized = [['0'..'9']] ++ [(replicate 10 '=')] ++ map (\index -> [if e >= index  then '*' else ' ' | e <- frequences]) [1..height]
     in
         unlines (reverse visualized)
