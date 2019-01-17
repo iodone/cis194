@@ -52,3 +52,10 @@ orderByHeightAsc t Leaf = (Leaf, t)
 orderByHeightAsc t0@(Node h0 _ _ _) t1@(Node h1 _ _ _) = if h0 > h1 then (t1, t0) else (t0, t1)
     
 
+-- Ex.3
+xor :: [Bool] -> Bool
+-- xor = foldr (/=) False
+xor = foldr it False
+    where it x acc 
+            | x == False = acc
+            | otherwise = not acc

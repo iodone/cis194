@@ -17,4 +17,15 @@ spec = describe "Homework04.Hw04" $ do
             fun2 19 `shouldBe` (fun2' 19)
             fun2 1 `shouldBe` (fun2' 1)
             fun2 32 `shouldBe` (fun2' 32)
-    
+
+    describe "xor" $ do
+        it "test xor" $ do
+            xor [True] `shouldBe` True
+            xor [True, True] `shouldBe` False 
+            xor [True, True, False] `shouldBe` False 
+            xor [True, True, False,False] `shouldBe` False 
+            xor [False] `shouldBe` False
+            xor [False, False] `shouldBe` False
+            xor [False, True] `shouldBe` True
+            xor [] `shouldBe` False
+     
