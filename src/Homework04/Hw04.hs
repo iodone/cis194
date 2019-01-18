@@ -1,5 +1,6 @@
 module Homework04.Hw04 where
 
+import Data.List ((\\))
 
 -- Ex.1
 fun1 :: [Integer] -> Integer
@@ -52,10 +53,21 @@ orderByHeightAsc t Leaf = (Leaf, t)
 orderByHeightAsc t0@(Node h0 _ _ _) t1@(Node h1 _ _ _) = if h0 > h1 then (t1, t0) else (t0, t1)
     
 
--- Ex.3
+-- Ex.3.1
 xor :: [Bool] -> Bool
 -- xor = foldr (/=) False
 xor = foldr it False
     where it x acc 
             | x == False = acc
             | otherwise = not acc
+        
+-- Ex.3.2
+map' :: (a -> b) -> [a] -> [b]
+-- map' f = fst . foldr (\x (acc, m) -> ((m x):acc, f)) ([],f)
+-- map' = foldr (:).f []
+map' f = foldr (\x acc -> f x:acc) []
+
+-- Ex.3.3
+sieveSundaram :: Integer -> [Integer]
+-- TODO: map id . ((||) []) what's mean ? why ???????
+sieveSundaram n = map ((+1).(*2)) . ((\\) [1..n]) $ [i+j+2*i*j | i <- [1..n], j <- [1..i], i+j+2*i*j <= n]
