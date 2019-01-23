@@ -70,4 +70,5 @@ map' f = foldr (\x acc -> f x:acc) []
 -- Ex.3.3
 sieveSundaram :: Integer -> [Integer]
 -- TODO: map id . ((||) []) what's mean ? why ???????
+--  map (\x -> (((+1).(*2)) . ((\\) [1..10])) x) not equal map ((+1).(*2)) . ((\\) [1..10])
 sieveSundaram n = map ((+1).(*2)) . ((\\) [1..n]) $ [i+j+2*i*j | i <- [1..n], j <- [1..i], i+j+2*i*j <= n]

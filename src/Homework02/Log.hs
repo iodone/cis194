@@ -1,6 +1,6 @@
 module Homework02.Log where
 
-import Control.Applicative
+import Control.Applicative()
 
 data MessageType = Info
                  | Warning

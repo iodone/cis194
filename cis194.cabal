@@ -33,7 +33,10 @@ library
       Homework02.LogAnalysis,
       Homework02.Log,
       Homework03.Golf,
-      Homework04.Hw04
+      Homework04.Hw04,
+      Homework05.Calc,
+      Homework05.ExprT,
+      Homework05.Parser
   hs-source-dirs:
       src
   build-depends:
@@ -60,6 +63,7 @@ test-suite test
       Homework02.LogAnalysisSpec,
       Homework03.GolfSpec,
       Homework04.Hw04Spec,
+      Homework05.CalcSpec,
       Paths_cis194
   hs-source-dirs:
       test
