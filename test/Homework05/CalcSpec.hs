@@ -2,7 +2,8 @@ module Homework05.CalcSpec where
 
     import Homework05.Calc
     import Homework05.ExprT
-    import Homework05.Parser
+    -- import Homework05.Parser
+    -- import Homework05.StackVM
     import Test.Hspec
     
     
@@ -35,4 +36,20 @@ module Homework05.CalcSpec where
             it "Valid expression" $ do
                 evalStr "(2+3)*4" `shouldBe` Just 20
                 evalStr "1+5*6" `shouldBe` Just 31
+        
+        describe "withVars" $ do
+            it "invalid case" $ do
+                withVars  [("x",  6)] (add  (lit  3)  (var  "y")) `shouldBe` Nothing
+            it "add case"  $ do
+                withVars  [("x",  6)]  (add  (lit  3)  (var  "x")) `shouldBe` Just 9
+                withVars  [("x",  6)]  (add  (lit  3)  (lit 6)) `shouldBe` Just 9
+                withVars  [("x",  6), ("y", 3)]  (add  (var "y")  (var "x")) `shouldBe` Just 9
+            it "var case" $ do
+                withVars  [("x",  6)]  (var  "x") `shouldBe` Just 6
+            it "mul case" $ do
+                withVars  [("x",  6)]  (mul (lit  3)  (var  "x")) `shouldBe` Just 18 
+                withVars  [("x",  6)]  (mul (lit  3)  (lit 6)) `shouldBe` Just 18
+                withVars  [("x",  6), ("y", 3)]  (mul  (var "y")  (var "x")) `shouldBe` Just 18
+            it "add and mul case" $ do
+                withVars  [("x",  6),  ("y",  3)] (mul (var  "x")  (add  (var  "y")  (var  "x"))) `shouldBe` Just 54
                 
