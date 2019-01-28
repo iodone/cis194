@@ -37,7 +37,8 @@ library
       Homework05.Calc,
       Homework05.ExprT,
       Homework05.Parser,
-      Homework05.StackVM
+      Homework05.StackVM,
+      Homework06.Fibonacci
   hs-source-dirs:
       src
   build-depends:
