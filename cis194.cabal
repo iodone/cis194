@@ -38,7 +38,9 @@ library
       Homework05.ExprT,
       Homework05.Parser,
       Homework05.StackVM,
-      Homework06.Fibonacci
+      Homework06.Fibonacci,
+      Homework08.Employee,
+      Homework08.Party
   hs-source-dirs:
       src
   build-depends:
@@ -68,6 +70,7 @@ test-suite test
       Homework03.GolfSpec,
       Homework04.Hw04Spec,
       Homework05.CalcSpec,
+      Homework08.PartySpec,
       Paths_cis194
   hs-source-dirs:
       test
