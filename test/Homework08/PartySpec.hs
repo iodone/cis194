@@ -13,6 +13,9 @@ module Homework08.PartySpec where
     guestList2 :: GuestList 
     guestList2 = GL [(Emp "Stan" 1)] 1
 
+    testCompanyGLs :: GuestList
+    testCompanyGLs = GL [(Emp "Stan" 9), (Emp "Bob" 2), (Emp "Joe" 5), (Emp "John" 1), (Emp "Sue" 5), (Emp "Fred" 3), (Emp "Sarah" 17), (Emp "Sam" 4)] 46
+
     spec :: Spec
     spec = describe "Homework08.Party" $ do
     
@@ -30,3 +33,11 @@ module Homework08.PartySpec where
             it "guestList1 should greater than guestList0" $ do
                 moreFun guestList0 guestList1 `shouldBe` guestList1
                 moreFun guestList1 guestList0 `shouldBe` guestList1
+                
+        describe "treeFold" $ do
+            it "testCompany" $ do
+                treeFold combineGLs testCompany `shouldBe` testCompanyGLs
+        
+        describe "process Tree Employee" $ do
+            it "Output maxFun" $ do
+                process
