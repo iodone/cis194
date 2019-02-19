@@ -40,4 +40,5 @@ module Homework08.PartySpec where
         
         describe "process Tree Employee" $ do
             it "Output maxFun" $ do
-                process
+               o <- process
+               o `shouldBe` ()
