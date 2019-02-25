@@ -40,7 +40,8 @@ library
       Homework05.StackVM,
       Homework06.Fibonacci,
       Homework08.Employee,
-      Homework08.Party
+      Homework08.Party,
+      Homework10.AParser
   hs-source-dirs:
       src
   build-depends:
@@ -71,6 +72,7 @@ test-suite test
       Homework04.Hw04Spec,
       Homework05.CalcSpec,
       Homework08.PartySpec,
+      Homework10.AParserSpec,
       Paths_cis194
   hs-source-dirs:
       test

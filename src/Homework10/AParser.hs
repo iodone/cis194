@@ -2,7 +2,7 @@
    due Monday, 1 April
 -}
 
-module AParser where
+module Homework10.AParser where
 
 import           Control.Applicative
 
@@ -73,5 +73,19 @@ instance Functor Parser where
 -- Ex.2
 instance Applicative Parser where
   pure x = Parser $ (\xs -> Just(x, xs))
-  Parser f <*> Paserp = Parser (\xs -> f xs >>= h) 
-    where h (fp, es) = fisrt fp <$> p es
+  Parser f <*> Parser p = Parser (\xs -> f xs >>= h) 
+    where h (fp, es) = first fp <$> p es
+
+type Name = String
+data Employee = Emp {name :: Name, phone :: String} deriving (Eq, Show)
+
+parseName :: Parser Name 
+parseName = Parser f
+  where
+    f [] = Nothing
+    f xs = Just (head names, unwords $ tail names)
+      where names = words xs
+
+parsePhone :: Parser String 
+parsePhone = show <$> posInt
+
