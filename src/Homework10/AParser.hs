@@ -89,3 +89,31 @@ parseName = Parser f
 parsePhone :: Parser String 
 parsePhone = show <$> posInt
 
+-- Ex.3
+abParser :: Parser (Char, Char)
+-- abParser = (\x y -> (x,y)) <$> satisfy (== 'a') <*> satisfy (== 'b')
+abParser = (,) <$> char 'a' <*> char 'b'
+
+abParser_ :: Parser ()
+-- abParser_ = (\_ _ -> ()) <$> satisfy (== 'a') <*> satisfy (== 'b')
+abParser_ = () <$ abParser
+
+intPair :: Parser [Integer] 
+-- intPair = (\x _ y -> x : y : []) <$> posInt <*> char ' ' <*> posInt
+intPair = (\x y -> x : y : []) <$> posInt <* char ' ' <*> posInt
+
+-- Ex.4
+
+instance Alternative Parser where
+  empty = Parser $ (\xs -> Nothing)
+  -- Parser h <|> Parser g = Parser f where 
+  --   f xs 
+  --     |  h xs == Nothing = g xs 
+  --     |  otherwise h xs
+  a <|> b = Parser f where   
+    f xs = runParser a xs <|> runParser b xs
+
+-- Ex.5
+intOrUppercase :: Parser ()
+intOrUppercase = (() <$ posInt) <|>  (() <$ satisfy isUpper)
+-- intOrUppercase = (const () <$> posInt) <|>  (const () <$> satisfy isUpper)
