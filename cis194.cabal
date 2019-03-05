@@ -41,7 +41,9 @@ library
       Homework06.Fibonacci,
       Homework08.Employee,
       Homework08.Party,
-      Homework10.AParser
+      Homework10.AParser,
+      Homework11.AParser,
+      Homework11.SExpr
   hs-source-dirs:
       src
   build-depends:
@@ -73,6 +75,7 @@ test-suite test
       Homework05.CalcSpec,
       Homework08.PartySpec,
       Homework10.AParserSpec,
+      Homework11.SExprSpec,
       Paths_cis194
   hs-source-dirs:
       test

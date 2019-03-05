@@ -4,7 +4,7 @@ module Homework10.AParserSpec where
     import Test.Hspec
 
     spec :: Spec
-    spec = describe "Homework10.Party" $ do
+    spec = describe "Homework10.AParser" $ do
     
         describe "fmap and applicative" $ do
             it "runParser with ParseName" $ do

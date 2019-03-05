@@ -6,6 +6,7 @@ module Homework11.SExpr where
 
 import Homework11.AParser
 import Control.Applicative
+import Data.Char
 
 ------------------------------------------------------------
 --  1. Parsing repetitions
@@ -44,9 +45,19 @@ type Ident = String
 
 -- An "atom" is either an integer value or an identifier.
 data Atom = N Integer | I Ident
-  deriving Show
+  deriving (Show, Eq)
 
 -- An S-expression is either an atom, or a list of S-expressions.
 data SExpr = A Atom
            | Comb [SExpr]
-  deriving Show
+  deriving (Show, Eq)
+
+parseAtom :: Parser Atom
+parseAtom = (N <$> posInt) <|> (I <$> ident)
+
+eatSpaces :: Parser a -> Parser a
+eatSpaces p = spaces *> p <* spaces
+
+
+parseSExpr :: Parser SExpr
+parseSExpr = (A <$> (eatSpaces parseAtom)) <|> Comb <$> ((eatSpaces (char '(')) *> oneOrMore (parseSExpr) <* (eatSpaces (char ')')))
